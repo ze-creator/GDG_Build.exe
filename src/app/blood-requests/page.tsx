@@ -1,11 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { Bell, Droplet, Heart, Users, LayoutDashboard, User, Settings, LogOut, UserCircle, MapPin, Calendar, Clock, Filter, Search, ChevronDown, AlertCircle, Info } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Bell, Droplet, Heart, Users, LayoutDashboard, User, Settings, LogOut, UserCircle, MapPin, Calendar, Clock, Filter, Search, ChevronDown, AlertCircle, Info, RefreshCcw, Database } from 'lucide-react';
 import Link from 'next/link';
 import { Sidebar, SidebarBody, SidebarLink } from '@/components/ui/sidebar';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { bloodRequestAPI } from '@/lib/api';
+import { collection, addDoc, Timestamp, getDocs, query, orderBy } from 'firebase/firestore';
+import { db } from '@/lib/firebase-config';
+import { toast } from 'react-hot-toast';
 
 interface BloodRequest {
   id: string;
@@ -17,7 +21,62 @@ interface BloodRequest {
   postedOn: string;
   distance: string;
   units: number;
+  createdAt?: any;
 }
+
+// Dummy data for seeding Firebase
+const dummyBloodRequests: Omit<BloodRequest, 'id'>[] = [
+  {
+    bloodType: 'O+',
+    urgency: 'critical',
+    hospital: 'City General Hospital',
+    location: 'Downtown, City Center',
+    requiredBy: '24 hours',
+    postedOn: '2 hours ago',
+    distance: '3.2 miles',
+    units: 3
+  },
+  {
+    bloodType: 'AB-',
+    urgency: 'high',
+    hospital: 'Memorial Medical Center',
+    location: 'Westside, Lincoln Road',
+    requiredBy: '48 hours',
+    postedOn: '6 hours ago',
+    distance: '1.5 miles',
+    units: 2
+  },
+  {
+    bloodType: 'B+',
+    urgency: 'medium',
+    hospital: 'Northern Regional Hospital',
+    location: 'Hillside, North Avenue',
+    requiredBy: '72 hours',
+    postedOn: '1 day ago',
+    distance: '5.8 miles',
+    units: 1
+  },
+  {
+    bloodType: 'A+',
+    urgency: 'standard',
+    hospital: "Children's Hospital",
+    location: 'Riverside, South Street',
+    requiredBy: '5 days',
+    postedOn: '2 days ago',
+    distance: '4.3 miles',
+    units: 4
+  },
+  {
+    bloodType: 'O-',
+    urgency: 'critical',
+    hospital: 'University Medical Center',
+    location: 'College Area, University Blvd',
+    requiredBy: '24 hours',
+    postedOn: '3 hours ago',
+    distance: '2.7 miles',
+    units: 2
+  },
+];
 
 export default function BloodRequestsPage() {
   const [open, setOpen] = useState(false);
@@ -25,65 +84,123 @@ export default function BloodRequestsPage() {
   const [urgencyFilter, setUrgencyFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('all'); // 'all' or 'nearby'
+  const [bloodRequests, setBloodRequests] = useState<BloodRequest[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [seeding, setSeeding] = useState(false);
   
-  // Sample blood requests data
-  const bloodRequests: BloodRequest[] = [
-    {
-      id: 'req-001',
-      bloodType: 'O+',
-      urgency: 'critical',
-      hospital: 'City General Hospital',
-      location: 'Downtown, City Center',
-      requiredBy: '24 hours',
-      postedOn: '2 hours ago',
-      distance: '3.2 miles',
-      units: 3
-    },
-    {
-      id: 'req-002',
-      bloodType: 'AB-',
-      urgency: 'high',
-      hospital: 'Memorial Medical Center',
-      location: 'Westside, Lincoln Road',
-      requiredBy: '48 hours',
-      postedOn: '6 hours ago',
-      distance: '1.5 miles',
-      units: 2
-    },
-    {
-      id: 'req-003',
-      bloodType: 'B+',
-      urgency: 'medium',
-      hospital: 'Northern Regional Hospital',
-      location: 'Hillside, North Avenue',
-      requiredBy: '72 hours',
-      postedOn: '1 day ago',
-      distance: '5.8 miles',
-      units: 1
-    },
-    {
-      id: 'req-004',
-      bloodType: 'A+',
-      urgency: 'standard',
-      hospital: 'Children\'s Hospital',
-      location: 'Riverside, South Street',
-      requiredBy: '5 days',
-      postedOn: '2 days ago',
-      distance: '4.3 miles',
-      units: 4
-    },
-    {
-      id: 'req-005',
-      bloodType: 'O-',
-      urgency: 'critical',
-      hospital: 'University Medical Center',
-      location: 'College Area, University Blvd',
-      requiredBy: '24 hours',
-      postedOn: '3 hours ago',
-      distance: '2.7 miles',
-      units: 2
-    },
-  ];
+  // Fetch blood requests from Firebase
+  const fetchBloodRequests = async () => {
+    setLoading(true);
+    try {
+      console.log('Fetching blood requests from Firebase...');
+      
+      // Try with orderBy first, fallback to simple query if index doesn't exist
+      let requestsSnapshot;
+      try {
+        requestsSnapshot = await getDocs(
+          query(collection(db, 'blood_requests'), orderBy('createdAt', 'desc'))
+        );
+      } catch (indexError: any) {
+        console.warn('OrderBy query failed (may need index), trying simple query...', indexError);
+        // If orderBy fails (usually due to missing index), try without ordering
+        requestsSnapshot = await getDocs(collection(db, 'blood_requests'));
+      }
+      
+      console.log(`Found ${requestsSnapshot.docs.length} blood requests`);
+      
+      const requests: BloodRequest[] = requestsSnapshot.docs.map(doc => {
+        const data = doc.data();
+        console.log('Document data:', doc.id, data);
+        return {
+          id: doc.id,
+          bloodType: data.bloodType || '',
+          urgency: data.urgency || 'standard',
+          hospital: data.hospital || '',
+          location: data.location || '',
+          requiredBy: data.requiredBy || '',
+          postedOn: data.postedOn || formatTimeAgo(data.createdAt?.toDate()),
+          distance: data.distance || 'Unknown',
+          units: data.units || 1,
+          createdAt: data.createdAt
+        };
+      });
+      
+      // Sort by urgency locally if we couldn't use orderBy
+      requests.sort((a, b) => {
+        const urgencyOrder: Record<string, number> = { critical: 0, high: 1, medium: 2, standard: 3 };
+        return (urgencyOrder[a.urgency] || 4) - (urgencyOrder[b.urgency] || 4);
+      });
+      
+      setBloodRequests(requests);
+      if (requests.length > 0) {
+        toast.success(`Loaded ${requests.length} blood requests`);
+      }
+    } catch (error: any) {
+      console.error('Error fetching blood requests:', error);
+      console.error('Error details:', error.message, error.code);
+      toast.error(`Failed to load: ${error.message || 'Unknown error'}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Format time ago helper
+  const formatTimeAgo = (date: Date | undefined) => {
+    if (!date) return 'Just now';
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffHours / 24);
+    
+    if (diffHours < 1) return 'Just now';
+    if (diffHours < 24) return `${diffHours} hours ago`;
+    if (diffDays === 1) return '1 day ago';
+    return `${diffDays} days ago`;
+  };
+
+  // Seed dummy data to Firebase
+  const seedDummyData = async () => {
+    setSeeding(true);
+    try {
+      const toastId = toast.loading('Seeding dummy data to Firebase...');
+      console.log('Starting to seed dummy data...');
+      
+      let successCount = 0;
+      for (const request of dummyBloodRequests) {
+        try {
+          console.log('Adding document:', request);
+          const docRef = await addDoc(collection(db, 'blood_requests'), {
+            ...request,
+            createdAt: Timestamp.now(),
+            status: 'active'
+          });
+          console.log('Document added with ID:', docRef.id);
+          successCount++;
+        } catch (docError: any) {
+          console.error('Error adding document:', docError);
+          toast.error(`Failed to add ${request.bloodType} request: ${docError.message}`);
+        }
+      }
+      
+      if (successCount > 0) {
+        toast.success(`Successfully added ${successCount} blood requests!`, { id: toastId });
+        await fetchBloodRequests(); // Refresh the list
+      } else {
+        toast.error('No documents were added', { id: toastId });
+      }
+    } catch (error: any) {
+      console.error('Error seeding dummy data:', error);
+      console.error('Error details:', error.message, error.code);
+      toast.error(`Failed to seed: ${error.message || 'Unknown error'}`);
+    } finally {
+      setSeeding(false);
+    }
+  };
+
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchBloodRequests();
+  }, []);
 
   // Filter blood requests based on selected filters and search query
   const filteredRequests = bloodRequests.filter(request => {
@@ -149,27 +266,27 @@ export default function BloodRequestsPage() {
     {
       label: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Profile",
       href: "/profile",
-      icon: <User className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <User className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Settings",
       href: "/settings",
-      icon: <Settings className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <Settings className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Blood Requests",
       href: "/blood-requests",
-      icon: <Droplet className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <Droplet className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Logout",
       href: "/",
-      icon: <LogOut className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <LogOut className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
   ];
 
@@ -192,8 +309,8 @@ export default function BloodRequestsPage() {
                   label: "John Doe",
                   href: "/profile",
                   icon: (
-                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#1E88E5]/30 flex items-center justify-center">
-                      <UserCircle className="h-5 w-5 text-[#1E88E5]" />
+                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/30 flex items-center justify-center">
+                      <UserCircle className="h-5 w-5 text-[#DC2626]" />
                     </div>
                   ),
                 }}
@@ -205,11 +322,33 @@ export default function BloodRequestsPage() {
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="mb-6">
-              <h2 className="text-3xl font-bold text-[#2C3E50]">
-                Blood <span className="text-[#1E88E5]">Requests</span>
-              </h2>
-              <p className="mt-2 text-[#7F8C8D]">Find and respond to blood donation requests in your area</p>
+            <div className="mb-6 flex flex-wrap justify-between items-start gap-4">
+              <div>
+                <h2 className="text-3xl font-bold text-[#2C3E50]">
+                  Blood <span className="text-[#DC2626]">Requests</span>
+                </h2>
+                <p className="mt-2 text-[#7F8C8D]">Find and respond to blood donation requests in your area</p>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex gap-2">
+                <button
+                  onClick={fetchBloodRequests}
+                  disabled={loading}
+                  className="flex items-center px-3 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] hover:bg-gray-50 transition-colors disabled:opacity-50"
+                >
+                  <RefreshCcw className={`h-4 w-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
+                  Refresh
+                </button>
+                <button
+                  onClick={seedDummyData}
+                  disabled={seeding || loading}
+                  className="flex items-center px-3 py-2 bg-[#DC2626] text-white rounded-md hover:bg-[#B91C1C] transition-colors disabled:opacity-50"
+                >
+                  <Database className={`h-4 w-4 mr-2 ${seeding ? 'animate-pulse' : ''}`} />
+                  {seeding ? 'Seeding...' : 'Seed Dummy Data'}
+                </button>
+              </div>
             </div>
             
             {/* Emergency Alert */}
@@ -229,7 +368,7 @@ export default function BloodRequestsPage() {
                   <select 
                     value={bloodTypeFilter}
                     onChange={(e) => setBloodTypeFilter(e.target.value)}
-                    className="appearance-none pl-8 pr-10 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                    className="appearance-none pl-8 pr-10 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                   >
                     <option value="all">All Blood Types</option>
                     <option value="A+">A+</option>
@@ -241,7 +380,7 @@ export default function BloodRequestsPage() {
                     <option value="O+">O+</option>
                     <option value="O-">O-</option>
                   </select>
-                  <Droplet className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#1E88E5]" />
+                  <Droplet className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#DC2626]" />
                   <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#7F8C8D]" />
                 </div>
                 
@@ -250,7 +389,7 @@ export default function BloodRequestsPage() {
                   <select 
                     value={urgencyFilter}
                     onChange={(e) => setUrgencyFilter(e.target.value)}
-                    className="appearance-none pl-8 pr-10 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                    className="appearance-none pl-8 pr-10 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                   >
                     <option value="all">All Urgency Levels</option>
                     <option value="critical">Critical</option>
@@ -258,7 +397,7 @@ export default function BloodRequestsPage() {
                     <option value="medium">Medium</option>
                     <option value="standard">Standard</option>
                   </select>
-                  <Clock className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#1E88E5]" />
+                  <Clock className="absolute left-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#DC2626]" />
                   <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#7F8C8D]" />
                 </div>
                 
@@ -267,7 +406,7 @@ export default function BloodRequestsPage() {
                   <button 
                     onClick={() => setViewMode('all')}
                     className={`px-4 py-2 text-sm font-medium ${viewMode === 'all' ? 
-                      'bg-[#1E88E5] text-white' : 
+                      'bg-[#DC2626] text-white' : 
                       'bg-white text-[#2C3E50] border border-[#E1E8ED] hover:bg-[#F8FAFC]'}`}
                   >
                     All Requests
@@ -275,7 +414,7 @@ export default function BloodRequestsPage() {
                   <button 
                     onClick={() => setViewMode('nearby')}
                     className={`px-4 py-2 text-sm font-medium ${viewMode === 'nearby' ? 
-                      'bg-[#1E88E5] text-white' : 
+                      'bg-[#DC2626] text-white' : 
                       'bg-white text-[#2C3E50] border border-[#E1E8ED] hover:bg-[#F8FAFC]'}`}
                   >
                     Nearby First
@@ -290,7 +429,7 @@ export default function BloodRequestsPage() {
                   placeholder="Search hospital or location"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full md:w-64 pl-10 pr-4 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] placeholder-[#94A3B8] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full md:w-64 pl-10 pr-4 py-2 bg-white border border-[#E1E8ED] rounded-md text-[#2C3E50] placeholder-[#94A3B8] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-[#7F8C8D]" />
               </div>
@@ -298,13 +437,19 @@ export default function BloodRequestsPage() {
             
             {/* Requests List */}
             <div className="space-y-4">
-              {sortedRequests.length > 0 ? (
+              {loading ? (
+                <div className="p-8 text-center bg-white border border-[#E1E8ED] rounded-lg">
+                  <div className="h-8 w-8 border-4 border-[#DC2626] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                  <h3 className="text-lg font-semibold text-[#2C3E50]">Loading blood requests...</h3>
+                  <p className="text-[#7F8C8D] mt-1">Fetching data from Firebase</p>
+                </div>
+              ) : sortedRequests.length > 0 ? (
                 sortedRequests.map((request) => (
                   <div key={request.id} className="bg-white border border-[#E1E8ED] rounded-lg p-4 shadow-sm">
                     <div className="flex flex-wrap gap-4 items-start justify-between">
                       <div>
                         <div className="flex items-center space-x-3">
-                          <span className="text-lg font-bold text-[#1E88E5]">{request.bloodType}</span>
+                          <span className="text-lg font-bold text-[#DC2626]">{request.bloodType}</span>
                           {renderUrgencyBadge(request.urgency)}
                         </div>
                         <h3 className="mt-2 text-lg font-semibold text-[#2C3E50]">{request.hospital}</h3>
@@ -317,7 +462,7 @@ export default function BloodRequestsPage() {
                       <div className="flex flex-col items-end">
                         <button 
                           onClick={() => handleResponseClick(request)}
-                          className="px-4 py-2 bg-[#1E88E5] hover:bg-[#1976D2] text-white rounded-md flex items-center"
+                          className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md flex items-center"
                         >
                           <Heart className="h-4 w-4 mr-2" />
                           Respond
@@ -337,7 +482,7 @@ export default function BloodRequestsPage() {
                     
                     <div className="mt-3 pt-3 border-t border-[#E1E8ED] flex justify-between items-center">
                       <span className="text-xs text-[#7F8C8D]">Posted {request.postedOn}</span>
-                      <button className="text-xs text-[#1E88E5] hover:underline flex items-center">
+                      <button className="text-xs text-[#DC2626] hover:underline flex items-center">
                         <Info className="h-3 w-3 mr-1" />
                         More Details
                       </button>
@@ -346,9 +491,22 @@ export default function BloodRequestsPage() {
                 ))
               ) : (
                 <div className="p-8 text-center bg-white border border-[#E1E8ED] rounded-lg">
-                  <Filter className="h-12 w-12 mx-auto text-[#7F8C8D] mb-3" />
-                  <h3 className="text-lg font-semibold text-[#2C3E50]">No matching requests found</h3>
-                  <p className="text-[#7F8C8D] mt-1">Try adjusting your filters or search criteria</p>
+                  <Database className="h-12 w-12 mx-auto text-[#7F8C8D] mb-3" />
+                  <h3 className="text-lg font-semibold text-[#2C3E50]">No blood requests found</h3>
+                  <p className="text-[#7F8C8D] mt-1">
+                    {bloodTypeFilter !== 'all' || urgencyFilter !== 'all' || searchQuery 
+                      ? 'Try adjusting your filters or search criteria'
+                      : 'Click "Seed Dummy Data" to add sample blood requests to Firebase'}
+                  </p>
+                  {bloodTypeFilter === 'all' && urgencyFilter === 'all' && !searchQuery && (
+                    <button
+                      onClick={seedDummyData}
+                      disabled={seeding}
+                      className="mt-4 px-4 py-2 bg-[#DC2626] text-white rounded-md hover:bg-[#B91C1C] transition-colors disabled:opacity-50"
+                    >
+                      {seeding ? 'Seeding...' : 'Seed Dummy Data'}
+                    </button>
+                  )}
                 </div>
               )}
             </div>
@@ -365,7 +523,7 @@ const Logo = () => {
       href="/dashboard"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-[#2C3E50]"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#1E88E5]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -383,7 +541,7 @@ const LogoIcon = () => {
       href="/dashboard"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-[#2C3E50]"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#1E88E5]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
     </Link>
   );
 }; 

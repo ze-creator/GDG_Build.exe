@@ -69,17 +69,17 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A1929] text-[#E0E0E0] flex flex-col">
+    <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Header */}
-      <header className="bg-[#132F4C] shadow-md py-4">
+      <header className="bg-white shadow-sm py-4 border-b border-red-100">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center space-x-2 text-[#FFFFFF]">
-            <Droplet className="h-6 w-6 text-[#007FFF]" />
+          <Link href="/" className="flex items-center space-x-2 text-gray-900">
+            <Droplet className="h-6 w-6 text-[#DC2626]" />
             <span className="text-xl font-semibold">BloodConnect</span>
           </Link>
           <Link 
             href="/"
-            className="flex items-center space-x-1 text-[#B0B0B0] hover:text-[#FFFFFF] transition-colors"
+            className="flex items-center space-x-1 text-gray-600 hover:text-gray-900 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Home</span>
@@ -89,10 +89,10 @@ export default function Register() {
 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-4">
-        <div className="w-full max-w-md p-8 rounded-lg bg-[#132F4C] border border-[#255D9A] shadow-xl">
+        <div className="w-full max-w-md p-8 rounded-lg bg-white border border-red-100 shadow-xl">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-[#FFFFFF]">Create Account</h1>
-            <p className="text-[#B0B0B0] mt-2">Join our blood donation community</p>
+            <h1 className="text-3xl font-bold text-gray-900">Create Account</h1>
+            <p className="text-gray-600 mt-2">Join our blood donation community</p>
           </div>
           
           {/* Alert section */}
@@ -100,8 +100,8 @@ export default function Register() {
             <div className="mb-6">
               <div className={`rounded-lg p-4 border ${
                 alertType === 'success' 
-                  ? 'bg-green-900/20 border-green-500 text-green-400' 
-                  : 'bg-[#B71C1C]/20 border-[#B71C1C] text-[#EF5350]'
+                  ? 'bg-green-50 border-green-500 text-green-700' 
+                  : 'bg-red-50 border-red-500 text-red-700'
               }`}>
                 <div className="flex items-center">
                   <AlertTriangle className="h-5 w-5 mr-2" />
@@ -118,7 +118,7 @@ export default function Register() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="firstName" className="block text-sm font-medium text-[#E0E0E0]">
+                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
                   First Name
                 </label>
                 <input
@@ -127,12 +127,12 @@ export default function Register() {
                   type="text"
                   required
                   placeholder="First Name"
-                  className="w-full px-4 py-3 bg-[#0A1929] border border-[#255D9A] focus:border-[#007FFF] focus:ring-1 focus:ring-[#007FFF] rounded-md text-[#FFFFFF] placeholder-[#718096]"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] rounded-md text-gray-900 placeholder-gray-400"
                 />
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="lastName" className="block text-sm font-medium text-[#E0E0E0]">
+                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
                   Last Name
                 </label>
                 <input
@@ -141,13 +141,13 @@ export default function Register() {
                   type="text"
                   required
                   placeholder="Last Name"
-                  className="w-full px-4 py-3 bg-[#0A1929] border border-[#255D9A] focus:border-[#007FFF] focus:ring-1 focus:ring-[#007FFF] rounded-md text-[#FFFFFF] placeholder-[#718096]"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] rounded-md text-gray-900 placeholder-gray-400"
                 />
               </div>
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-medium text-[#E0E0E0]">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -156,12 +156,12 @@ export default function Register() {
                 type="email"
                 required
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 bg-[#0A1929] border border-[#255D9A] focus:border-[#007FFF] focus:ring-1 focus:ring-[#007FFF] rounded-md text-[#FFFFFF] placeholder-[#718096]"
+                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] rounded-md text-gray-900 placeholder-gray-400"
               />
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-medium text-[#E0E0E0]">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -170,20 +170,20 @@ export default function Register() {
                 type="password"
                 required
                 placeholder="Create a password"
-                className="w-full px-4 py-3 bg-[#0A1929] border border-[#255D9A] focus:border-[#007FFF] focus:ring-1 focus:ring-[#007FFF] rounded-md text-[#FFFFFF] placeholder-[#718096]"
+                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] rounded-md text-gray-900 placeholder-gray-400"
               />
-              <p className="text-xs text-[#B0B0B0]">Must be at least 8 characters</p>
+              <p className="text-xs text-gray-500">Must be at least 8 characters</p>
             </div>
             
             <div className="space-y-2">
-              <label htmlFor="bloodType" className="block text-sm font-medium text-[#E0E0E0]">
+              <label htmlFor="bloodType" className="block text-sm font-medium text-gray-700">
                 Blood Type
               </label>
               <select
                 id="bloodType"
                 name="bloodType"
                 required
-                className="w-full px-4 py-3 bg-[#0A1929] border border-[#255D9A] focus:border-[#007FFF] focus:ring-1 focus:ring-[#007FFF] rounded-md text-[#FFFFFF]"
+                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#DC2626] focus:ring-1 focus:ring-[#DC2626] rounded-md text-gray-900"
               >
                 <option value="" disabled>Select your blood type</option>
                 <option value="A+">A+</option>
@@ -203,17 +203,17 @@ export default function Register() {
                 name="terms"
                 type="checkbox"
                 required
-                className="h-4 w-4 text-[#007FFF] bg-[#0A1929] border-[#255D9A] rounded focus:ring-[#007FFF]"
+                className="h-4 w-4 text-[#DC2626] bg-white border-gray-300 rounded focus:ring-[#DC2626]"
               />
-              <label htmlFor="terms" className="ml-2 block text-sm text-[#B0B0B0]">
-                I agree to the <Link href="/terms" className="text-[#007FFF] hover:text-[#0059B2]">Terms of Service</Link> and <Link href="/privacy" className="text-[#007FFF] hover:text-[#0059B2]">Privacy Policy</Link>
+              <label htmlFor="terms" className="ml-2 block text-sm text-gray-600">
+                I agree to the <Link href="/terms" className="text-[#DC2626] hover:text-[#B91C1C]">Terms of Service</Link> and <Link href="/privacy" className="text-[#DC2626] hover:text-[#B91C1C]">Privacy Policy</Link>
               </label>
             </div>
             
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center items-center gap-2 py-3 px-4 bg-[#007FFF] hover:bg-[#0059B2] text-white font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center items-center gap-2 py-3 px-4 bg-[#DC2626] hover:bg-[#B91C1C] text-white font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <>
@@ -230,8 +230,8 @@ export default function Register() {
           </form>
           
           <div className="mt-6 text-center text-sm">
-            <span className="text-[#B0B0B0]">Already have an account?</span>
-            <Link href="/auth/login" className="ml-1 text-[#007FFF] hover:text-[#0059B2]">
+            <span className="text-gray-600">Already have an account?</span>
+            <Link href="/auth/login" className="ml-1 text-[#DC2626] hover:text-[#B91C1C]">
               Sign in
             </Link>
           </div>

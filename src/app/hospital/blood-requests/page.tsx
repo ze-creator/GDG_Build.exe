@@ -43,14 +43,14 @@ export default function BloodRequests() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white p-8">
+    <div className="min-h-screen bg-[#f9fafb] text-gray-900 p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Blood Requests</h1>
           
           <button
             onClick={() => setShowRequestForm(true)}
-            className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white px-4 py-2 rounded-md flex items-center"
+            className="bg-[#DC2626] hover:bg-[#B91C1C] text-gray-900 px-4 py-2 rounded-md flex items-center"
           >
             <Plus className="h-5 w-5 mr-2" />
             New Request
@@ -60,18 +60,18 @@ export default function BloodRequests() {
         {/* Request Form Modal */}
         {showRequestForm && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-[#1E1E1E] rounded-lg p-6 w-full max-w-md">
+            <div className="bg-[#ffffff] rounded-lg p-6 w-full max-w-md">
               <h2 className="text-xl font-semibold mb-4">Create Blood Request</h2>
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Blood Type
                   </label>
                   <select
                     value={formData.bloodType}
                     onChange={(e) => setFormData({...formData, bloodType: e.target.value})}
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     required
                   >
                     <option value="">Select Blood Type</option>
@@ -87,7 +87,7 @@ export default function BloodRequests() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Units Required
                   </label>
                   <input
@@ -95,19 +95,19 @@ export default function BloodRequests() {
                     min="1"
                     value={formData.units}
                     onChange={(e) => setFormData({...formData, units: parseInt(e.target.value)})}
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Urgency Level
                   </label>
                   <select
                     value={formData.urgency}
                     onChange={(e) => setFormData({...formData, urgency: e.target.value})}
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     required
                   >
                     <option value="normal">Normal</option>
@@ -117,20 +117,20 @@ export default function BloodRequests() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Required By
                   </label>
                   <input
                     type="date"
                     value={formData.requiredBy}
                     onChange={(e) => setFormData({...formData, requiredBy: e.target.value})}
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Location
                   </label>
                   <input
@@ -138,19 +138,19 @@ export default function BloodRequests() {
                     value={formData.location}
                     onChange={(e) => setFormData({...formData, location: e.target.value})}
                     placeholder="Hospital location"
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                  <label className="block text-sm font-medium text-gray-600 mb-1">
                     Additional Notes
                   </label>
                   <textarea
                     value={formData.additionalNotes}
                     onChange={(e) => setFormData({...formData, additionalNotes: e.target.value})}
-                    className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white"
+                    className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900"
                     rows={3}
                   ></textarea>
                 </div>
@@ -159,13 +159,13 @@ export default function BloodRequests() {
                   <button
                     type="button"
                     onClick={() => setShowRequestForm(false)}
-                    className="px-4 py-2 bg-[#333333] text-white rounded-md"
+                    className="px-4 py-2 bg-[#fecaca] text-gray-900 rounded-md"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-[#9C27B0] hover:bg-[#7B1FA2] text-white rounded-md"
+                    className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-gray-900 rounded-md"
                   >
                     Create Request
                   </button>

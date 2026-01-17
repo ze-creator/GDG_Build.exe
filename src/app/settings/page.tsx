@@ -113,27 +113,27 @@ export default function SettingsPage() {
     {
       label: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Profile",
       href: "/profile",
-      icon: <User className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <User className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Settings",
       href: "/settings",
-      icon: <Settings className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <Settings className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Blood Requests",
       href: "/blood-requests",
-      icon: <Droplet className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <Droplet className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Logout",
       href: "/",
-      icon: <LogOut className="h-5 w-5 shrink-0 text-[#1E88E5]" />,
+      icon: <LogOut className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
   ];
 
@@ -307,8 +307,8 @@ export default function SettingsPage() {
                   label: "John Doe",
                   href: "/profile",
                   icon: (
-                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#1E88E5]/30 flex items-center justify-center">
-                      <UserCircle className="h-5 w-5 text-[#1E88E5]" />
+                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/30 flex items-center justify-center">
+                      <UserCircle className="h-5 w-5 text-[#DC2626]" />
                     </div>
                   ),
                 }}
@@ -322,14 +322,14 @@ export default function SettingsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-3xl font-bold text-[#2C3E50]">
-                Your <span className="text-[#1E88E5]">Settings</span>
+                Your <span className="text-[#DC2626]">Settings</span>
               </h2>
               
               {/* Save button */}
               <button 
                 onClick={saveSettings}
                 className={`flex items-center px-4 py-2 rounded-md text-white transition-colors ${
-                  saveSuccess ? 'bg-green-500' : 'bg-[#1E88E5] hover:bg-[#1976D2]'
+                  saveSuccess ? 'bg-green-500' : 'bg-[#DC2626] hover:bg-[#B91C1C]'
                 }`}
               >
                 {saveSuccess ? (
@@ -356,11 +356,11 @@ export default function SettingsPage() {
                       onClick={() => setActiveTab('notifications')}
                       className={`w-full text-left p-3 rounded-md flex items-center space-x-2 ${
                         activeTab === 'notifications' 
-                          ? 'bg-[#1E88E5]/10 text-[#1E88E5] font-medium' 
+                          ? 'bg-[#DC2626]/10 text-[#DC2626] font-medium' 
                           : 'hover:bg-[#F8FAFC] text-[#2C3E50]'
                       }`}
                     >
-                      <Bell className={`h-5 w-5 ${activeTab === 'notifications' ? 'text-[#1E88E5]' : 'text-[#7F8C8D]'}`} />
+                      <Bell className={`h-5 w-5 ${activeTab === 'notifications' ? 'text-[#DC2626]' : 'text-[#7F8C8D]'}`} />
                       <span>Notification Preferences</span>
                     </button>
                     
@@ -368,11 +368,11 @@ export default function SettingsPage() {
                       onClick={() => setActiveTab('account')}
                       className={`w-full text-left p-3 rounded-md flex items-center space-x-2 ${
                         activeTab === 'account' 
-                          ? 'bg-[#1E88E5]/10 text-[#1E88E5] font-medium' 
+                          ? 'bg-[#DC2626]/10 text-[#DC2626] font-medium' 
                           : 'hover:bg-[#F8FAFC] text-[#2C3E50]'
                       }`}
                     >
-                      <User className={`h-5 w-5 ${activeTab === 'account' ? 'text-[#1E88E5]' : 'text-[#7F8C8D]'}`} />
+                      <User className={`h-5 w-5 ${activeTab === 'account' ? 'text-[#DC2626]' : 'text-[#7F8C8D]'}`} />
                       <span>Account Settings</span>
                     </button>
                     
@@ -380,11 +380,11 @@ export default function SettingsPage() {
                       onClick={() => setActiveTab('privacy')}
                       className={`w-full text-left p-3 rounded-md flex items-center space-x-2 ${
                         activeTab === 'privacy' 
-                          ? 'bg-[#1E88E5]/10 text-[#1E88E5] font-medium' 
+                          ? 'bg-[#DC2626]/10 text-[#DC2626] font-medium' 
                           : 'hover:bg-[#F8FAFC] text-[#2C3E50]'
                       }`}
                     >
-                      <Shield className={`h-5 w-5 ${activeTab === 'privacy' ? 'text-[#1E88E5]' : 'text-[#7F8C8D]'}`} />
+                      <Shield className={`h-5 w-5 ${activeTab === 'privacy' ? 'text-[#DC2626]' : 'text-[#7F8C8D]'}`} />
                       <span>Privacy Controls</span>
                     </button>
                     
@@ -392,11 +392,11 @@ export default function SettingsPage() {
                       onClick={() => setActiveTab('security')}
                       className={`w-full text-left p-3 rounded-md flex items-center space-x-2 ${
                         activeTab === 'security' 
-                          ? 'bg-[#1E88E5]/10 text-[#1E88E5] font-medium' 
+                          ? 'bg-[#DC2626]/10 text-[#DC2626] font-medium' 
                           : 'hover:bg-[#F8FAFC] text-[#2C3E50]'
                       }`}
                     >
-                      <Lock className={`h-5 w-5 ${activeTab === 'security' ? 'text-[#1E88E5]' : 'text-[#7F8C8D]'}`} />
+                      <Lock className={`h-5 w-5 ${activeTab === 'security' ? 'text-[#DC2626]' : 'text-[#7F8C8D]'}`} />
                       <span>Security</span>
                     </button>
                     
@@ -404,11 +404,11 @@ export default function SettingsPage() {
                       onClick={() => setActiveTab('data')}
                       className={`w-full text-left p-3 rounded-md flex items-center space-x-2 ${
                         activeTab === 'data' 
-                          ? 'bg-[#1E88E5]/10 text-[#1E88E5] font-medium' 
+                          ? 'bg-[#DC2626]/10 text-[#DC2626] font-medium' 
                           : 'hover:bg-[#F8FAFC] text-[#2C3E50]'
                       }`}
                     >
-                      <Download className={`h-5 w-5 ${activeTab === 'data' ? 'text-[#1E88E5]' : 'text-[#7F8C8D]'}`} />
+                      <Download className={`h-5 w-5 ${activeTab === 'data' ? 'text-[#DC2626]' : 'text-[#7F8C8D]'}`} />
                       <span>Data Management</span>
                     </button>
                   </div>
@@ -424,7 +424,7 @@ export default function SettingsPage() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Mail className="h-5 w-5 text-[#1E88E5]" />
+                          <Mail className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Email Notifications</span>
                             <p className="text-[#7F8C8D] text-sm">Receive updates via email</p>
@@ -437,13 +437,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setEmailNotifications)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${emailNotifications ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${emailNotifications ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Phone className="h-5 w-5 text-[#1E88E5]" />
+                          <Phone className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">SMS Notifications</span>
                             <p className="text-[#7F8C8D] text-sm">Receive updates via text message</p>
@@ -456,13 +456,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setSmsNotifications)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${smsNotifications ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${smsNotifications ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Bell className="h-5 w-5 text-[#1E88E5]" />
+                          <Bell className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">App Notifications</span>
                             <p className="text-[#7F8C8D] text-sm">Receive in-app notifications</p>
@@ -475,13 +475,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setAppNotifications)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${appNotifications ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${appNotifications ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Heart className="h-5 w-5 text-[#1E88E5]" />
+                          <Heart className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Emergency Blood Alerts</span>
                             <p className="text-[#7F8C8D] text-sm">Urgent notifications for blood needs</p>
@@ -494,13 +494,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setEmergencyAlerts)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${emergencyAlerts ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${emergencyAlerts ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Calendar className="h-5 w-5 text-[#1E88E5]" />
+                          <Calendar className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Appointment Reminders</span>
                             <p className="text-[#7F8C8D] text-sm">Get reminded about upcoming appointments</p>
@@ -513,13 +513,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setAppointmentReminders)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${appointmentReminders ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${appointmentReminders ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-3 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Droplet className="h-5 w-5 text-[#1E88E5]" />
+                          <Droplet className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Donation Reminders</span>
                             <p className="text-[#7F8C8D] text-sm">Get reminded when you're eligible to donate again</p>
@@ -532,7 +532,7 @@ export default function SettingsPage() {
                             onChange={handleToggle(setDonationReminders)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${donationReminders ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${donationReminders ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                     </div>
@@ -552,7 +552,7 @@ export default function SettingsPage() {
                             name="firstName"
                             value={profile.firstName}
                             onChange={handleProfileChange}
-                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                           />
                         </div>
                         
@@ -563,7 +563,7 @@ export default function SettingsPage() {
                             name="lastName"
                             value={profile.lastName}
                             onChange={handleProfileChange}
-                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                           />
                         </div>
                       </div>
@@ -575,7 +575,7 @@ export default function SettingsPage() {
                           name="email"
                           value={profile.email}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                          className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                         />
                       </div>
                       
@@ -586,7 +586,7 @@ export default function SettingsPage() {
                           name="phone"
                           value={profile.phone}
                           onChange={handleProfileChange}
-                          className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                          className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                         />
                       </div>
                       
@@ -597,7 +597,7 @@ export default function SettingsPage() {
                             name="bloodType"
                             value={profile.bloodType}
                             onChange={handleProfileChange}
-                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                           >
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
@@ -616,7 +616,7 @@ export default function SettingsPage() {
                             name="language"
                             value={profile.language}
                             onChange={handleProfileChange}
-                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                            className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                           >
                             <option value="en">English</option>
                             <option value="es">Spanish</option>
@@ -631,7 +631,7 @@ export default function SettingsPage() {
                       <div className="flex justify-end pt-2">
                         <button 
                           onClick={() => setShowPasswordModal(true)}
-                          className="bg-[#1E88E5] hover:bg-[#1976D2] text-white py-2 px-4 rounded-md flex items-center space-x-2"
+                          className="bg-[#DC2626] hover:bg-[#B91C1C] text-white py-2 px-4 rounded-md flex items-center space-x-2"
                         >
                           <Lock className="h-4 w-4" />
                           <span>Change Password</span>
@@ -657,10 +657,10 @@ export default function SettingsPage() {
                               value="public"
                               checked={profileVisibility === 'public'}
                               onChange={handleProfileVisibilityChange}
-                              className="text-[#1E88E5] focus:ring-0"
+                              className="text-[#DC2626] focus:ring-0"
                             />
                             <label htmlFor="public" className="flex items-center space-x-2">
-                              <Globe className="h-4 w-4 text-[#1E88E5]" />
+                              <Globe className="h-4 w-4 text-[#DC2626]" />
                               <div>
                                 <span className="text-[#2C3E50]">Public</span>
                                 <p className="text-[#7F8C8D] text-sm">Anyone can view your profile</p>
@@ -676,10 +676,10 @@ export default function SettingsPage() {
                               value="donors-only"
                               checked={profileVisibility === 'donors-only'}
                               onChange={handleProfileVisibilityChange}
-                              className="text-[#1E88E5] focus:ring-0"
+                              className="text-[#DC2626] focus:ring-0"
                             />
                             <label htmlFor="donors-only" className="flex items-center space-x-2">
-                              <Users className="h-4 w-4 text-[#1E88E5]" />
+                              <Users className="h-4 w-4 text-[#DC2626]" />
                               <div>
                                 <span className="text-[#2C3E50]">Donors Only</span>
                                 <p className="text-[#7F8C8D] text-sm">Only verified donors can view your profile</p>
@@ -695,10 +695,10 @@ export default function SettingsPage() {
                               value="private"
                               checked={profileVisibility === 'private'}
                               onChange={handleProfileVisibilityChange}
-                              className="text-[#1E88E5] focus:ring-0"
+                              className="text-[#DC2626] focus:ring-0"
                             />
                             <label htmlFor="private" className="flex items-center space-x-2">
-                              <Eye className="h-4 w-4 text-[#1E88E5]" />
+                              <Eye className="h-4 w-4 text-[#DC2626]" />
                               <div>
                                 <span className="text-[#2C3E50]">Private</span>
                                 <p className="text-[#7F8C8D] text-sm">Only you can view your profile</p>
@@ -710,7 +710,7 @@ export default function SettingsPage() {
                       
                       <div className="flex items-center justify-between p-4 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <MapPin className="h-5 w-5 text-[#1E88E5]" />
+                          <MapPin className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Location Sharing</span>
                             <p className="text-[#7F8C8D] text-sm">Allow sharing your approximate location</p>
@@ -723,13 +723,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setLocationSharing)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${locationSharing ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${locationSharing ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-4 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Phone className="h-5 w-5 text-[#1E88E5]" />
+                          <Phone className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Show Contact Information</span>
                             <p className="text-[#7F8C8D] text-sm">Allow others to see your contact details</p>
@@ -742,13 +742,13 @@ export default function SettingsPage() {
                             onChange={handleToggle(setShowContactInfo)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${showContactInfo ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${showContactInfo ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                       
                       <div className="flex items-center justify-between p-4 border border-[#E1E8ED] rounded-md bg-[#F8FAFC]">
                         <div className="flex items-center space-x-3">
-                          <Droplet className="h-5 w-5 text-[#1E88E5]" />
+                          <Droplet className="h-5 w-5 text-[#DC2626]" />
                           <div>
                             <span className="text-[#2C3E50] font-medium">Show Donation History</span>
                             <p className="text-[#7F8C8D] text-sm">Allow others to see your donation history</p>
@@ -761,7 +761,7 @@ export default function SettingsPage() {
                             onChange={handleToggle(setShowDonationHistory)}
                             className="sr-only peer"
                           />
-                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${showDonationHistory ? 'bg-[#1E88E5]' : ''}`}></div>
+                          <div className={`w-11 h-6 bg-[#E1E8ED] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all ${showDonationHistory ? 'bg-[#DC2626]' : ''}`}></div>
                         </label>
                       </div>
                     </div>
@@ -781,7 +781,7 @@ export default function SettingsPage() {
                           </div>
                           <button 
                             onClick={() => setShowPasswordModal(true)}
-                            className="px-3 py-1 bg-[#1E88E5] hover:bg-[#1976D2] text-white rounded-md text-sm flex items-center space-x-1"
+                            className="px-3 py-1 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md text-sm flex items-center space-x-1"
                           >
                             <RefreshCcw className="h-3 w-3" />
                             <span>Change</span>
@@ -804,7 +804,7 @@ export default function SettingsPage() {
                             className={`px-3 py-1 rounded-md text-sm flex items-center space-x-1 ${
                               security.twoFactorEnabled 
                                 ? 'bg-green-100 text-green-600 hover:bg-green-200' 
-                                : 'bg-[#1E88E5] hover:bg-[#1976D2] text-white'
+                                : 'bg-[#DC2626] hover:bg-[#B91C1C] text-white'
                             }`}
                           >
                             {security.twoFactorEnabled ? (
@@ -856,7 +856,7 @@ export default function SettingsPage() {
                           </div>
                           <button 
                             onClick={exportUserData}
-                            className="px-4 py-2 bg-[#1E88E5] hover:bg-[#1976D2] text-white rounded-md flex items-center space-x-2"
+                            className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md flex items-center space-x-2"
                             disabled={exportingData}
                           >
                             {exportingData ? (
@@ -914,7 +914,7 @@ export default function SettingsPage() {
                   value={passwordData.currentPassword}
                   onChange={handlePasswordChange}
                   required
-                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
               </div>
               
@@ -926,7 +926,7 @@ export default function SettingsPage() {
                   value={passwordData.newPassword}
                   onChange={handlePasswordChange}
                   required
-                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
               </div>
               
@@ -938,7 +938,7 @@ export default function SettingsPage() {
                   value={passwordData.confirmPassword}
                   onChange={handlePasswordChange}
                   required
-                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
               </div>
               
@@ -956,7 +956,7 @@ export default function SettingsPage() {
                 </button>
                 <button 
                   type="submit"
-                  className="px-4 py-2 bg-[#1E88E5] hover:bg-[#1976D2] text-white rounded-md transition-colors"
+                  className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md transition-colors"
                 >
                   Update Password
                 </button>
@@ -1010,7 +1010,7 @@ const Logo = () => {
       href="/dashboard"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-[#2C3E50]"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#1E88E5]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -1028,7 +1028,7 @@ const LogoIcon = () => {
       href="/dashboard"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-[#2C3E50]"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#1E88E5]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
     </Link>
   );
 }; 

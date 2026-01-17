@@ -89,7 +89,7 @@ export const DesktopSidebar = ({
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden md:flex md:flex-col bg-[#121212] border-r border-[#333333] w-[300px] shrink-0",
+          "h-full px-4 py-4 hidden md:flex md:flex-col bg-white border-r border-red-100 w-[300px] shrink-0",
           className
         )}
         animate={{
@@ -115,13 +115,13 @@ export const MobileSidebar = ({
     <>
       <div
         className={cn(
-          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-[#121212] border-b border-[#333333] w-full"
+          "h-10 px-4 py-4 flex flex-row md:hidden items-center justify-between bg-white border-b border-red-100 w-full"
         )}
         {...props}
       >
         <div className="flex justify-end z-20 w-full">
           <IconMenu2
-            className="text-white"
+            className="text-gray-900"
             onClick={() => setOpen(!open)}
           />
         </div>
@@ -136,12 +136,12 @@ export const MobileSidebar = ({
                 ease: "easeInOut",
               }}
               className={cn(
-                "fixed h-full w-full inset-0 bg-[#121212] p-10 z-[100] flex flex-col justify-between",
+                "fixed h-full w-full inset-0 bg-white p-10 z-[100] flex flex-col justify-between",
                 className
               )}
             >
               <div
-                className="absolute right-10 top-10 z-50 text-white"
+                className="absolute right-10 top-10 z-50 text-gray-900"
                 onClick={() => setOpen(!open)}
               >
                 <IconX />
@@ -169,7 +169,7 @@ export const SidebarLink = ({
     <Link
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2 group/sidebar py-2 text-white hover:text-[#9C27B0] transition-colors",
+        "flex items-center justify-start gap-2 group/sidebar py-2 text-gray-900 hover:text-[#DC2626] transition-colors",
         className
       )}
       {...props}

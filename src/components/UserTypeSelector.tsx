@@ -68,13 +68,13 @@ const UserTypeSelector = ({ userType, setUserType }: UserTypeSelectorProps) => {
   
   return (
     <div className="mb-8">
-      <h3 className="text-lg font-semibold text-white mb-4">I want to:</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">I want to:</h3>
       
       {/* Show error message if any */}
       {error && (
-        <div className="mb-4 p-3 bg-red-900/20 border border-red-800 rounded-md flex items-start">
-          <AlertCircle className="h-5 w-5 text-red-500 mr-2 mt-0.5 flex-shrink-0" />
-          <p className="text-red-400 text-sm">{error}</p>
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md flex items-start">
+          <AlertCircle className="h-5 w-5 text-red-600 mr-2 mt-0.5 flex-shrink-0" />
+          <p className="text-red-600 text-sm">{error}</p>
         </div>
       )}
       
@@ -84,12 +84,12 @@ const UserTypeSelector = ({ userType, setUserType }: UserTypeSelectorProps) => {
           disabled={isUpdating || loading}
           className={`p-4 rounded-lg border ${
             userType === 'donor'
-              ? 'bg-[#9C27B0]/20 border-[#9C27B0] text-white'
-              : 'bg-[#1E1E1E] border-[#333333] text-gray-400 hover:border-[#9C27B0]/50'
+              ? 'bg-[#DC2626]/10 border-[#DC2626] text-gray-900'
+              : 'bg-white border-red-100 text-gray-600 hover:border-[#DC2626]/50'
           } transition-colors flex items-center justify-center`}
         >
           <div className="flex flex-col items-center space-y-2">
-            <Heart className={`h-6 w-6 ${userType === 'donor' ? 'text-[#9C27B0]' : 'text-gray-400'}`} />
+            <Heart className={`h-6 w-6 ${userType === 'donor' ? 'text-[#DC2626]' : 'text-gray-400'}`} />
             <span className="font-medium">Be a Donor</span>
             <p className="text-xs text-center">I want to donate blood to help others</p>
           </div>
@@ -100,12 +100,12 @@ const UserTypeSelector = ({ userType, setUserType }: UserTypeSelectorProps) => {
           disabled={isUpdating || loading}
           className={`p-4 rounded-lg border ${
             userType === 'recipient'
-              ? 'bg-[#9C27B0]/20 border-[#9C27B0] text-white'
-              : 'bg-[#1E1E1E] border-[#333333] text-gray-400 hover:border-[#9C27B0]/50'
+              ? 'bg-[#DC2626]/10 border-[#DC2626] text-gray-900'
+              : 'bg-white border-red-100 text-gray-600 hover:border-[#DC2626]/50'
           } transition-colors flex items-center justify-center`}
         >
           <div className="flex flex-col items-center space-y-2">
-            <User className={`h-6 w-6 ${userType === 'recipient' ? 'text-[#9C27B0]' : 'text-gray-400'}`} />
+            <User className={`h-6 w-6 ${userType === 'recipient' ? 'text-[#DC2626]' : 'text-gray-400'}`} />
             <span className="font-medium">Need Blood</span>
             <p className="text-xs text-center">I'm looking for blood donors</p>
           </div>
@@ -114,8 +114,8 @@ const UserTypeSelector = ({ userType, setUserType }: UserTypeSelectorProps) => {
       
       {isUpdating && (
         <div className="mt-4 flex justify-center">
-          <div className="flex items-center space-x-2 text-sm text-gray-400">
-            <div className="h-4 w-4 border-2 border-[#9C27B0] border-t-transparent rounded-full animate-spin"></div>
+          <div className="flex items-center space-x-2 text-sm text-gray-600">
+            <div className="h-4 w-4 border-2 border-[#DC2626] border-t-transparent rounded-full animate-spin"></div>
             <span>Updating your role...</span>
           </div>
         </div>

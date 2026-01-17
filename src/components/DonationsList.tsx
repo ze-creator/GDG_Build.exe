@@ -27,23 +27,23 @@ const DonationsList: React.FC<DonationsListProps> = ({
           key={donation.id} 
           className={`p-4 rounded-lg border ${
             donation.status === 'completed' 
-              ? 'bg-green-900/20 border-green-800/50' 
+              ? 'bg-green-50 border-green-200' 
               : donation.status === 'pending'
-                ? 'bg-yellow-900/20 border-yellow-800/50'
-                : 'bg-[#1E1E1E] border-[#333333]'
+                ? 'bg-yellow-50 border-yellow-200'
+                : 'bg-white border-red-100'
           }`}
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex-1">
               <div className="flex items-center mb-2">
-                <Droplet className="text-[#9C27B0] h-5 w-5 mr-2" />
-                <h4 className="font-semibold text-white">{donation.bloodType} Blood Donation</h4>
+                <Droplet className="text-[#DC2626] h-5 w-5 mr-2" />
+                <h4 className="font-semibold text-gray-900">{donation.bloodType} Blood Donation</h4>
                 <div className={`ml-3 px-2 py-0.5 text-xs rounded-full ${
                   donation.status === 'completed' 
-                    ? 'bg-green-900 text-green-300' 
+                    ? 'bg-green-100 text-green-700' 
                     : donation.status === 'pending'
-                      ? 'bg-yellow-900 text-yellow-300'
-                      : 'bg-blue-900 text-blue-300'
+                      ? 'bg-yellow-100 text-yellow-700'
+                      : 'bg-blue-100 text-blue-700'
                 }`}>
                   {donation.status === 'completed' 
                     ? 'Completed'
@@ -54,22 +54,22 @@ const DonationsList: React.FC<DonationsListProps> = ({
               </div>
               
               <div className="text-sm flex flex-wrap gap-y-1 gap-x-4">
-                <div className="flex items-center text-gray-400">
+                <div className="flex items-center text-gray-600">
                   <Phone className="h-4 w-4 mr-1" />
                   <span>{donation.contactNumber}</span>
                 </div>
-                <div className="flex items-center text-gray-400">
+                <div className="flex items-center text-gray-600">
                   <Clock className="h-4 w-4 mr-1" />
                   <span>{donation.availability}</span>
                 </div>
-                <div className="flex items-center text-gray-400">
+                <div className="flex items-center text-gray-600">
                   <MapPin className="h-4 w-4 mr-1" />
                   <span>{donation.location}</span>
                 </div>
               </div>
               
               {donation.additionalInfo && (
-                <div className="mt-2 text-sm text-gray-400 flex items-start">
+                <div className="mt-2 text-sm text-gray-600 flex items-start">
                   <Info className="h-4 w-4 mr-1 mt-0.5 flex-shrink-0" />
                   <p>{donation.additionalInfo}</p>
                 </div>
@@ -127,7 +127,7 @@ const DonationsList: React.FC<DonationsListProps> = ({
                   // Available donation for recipient - request option
                   <button
                     onClick={() => onRequestDonation(donation.id)}
-                    className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white px-3 py-1 rounded-md text-sm inline-flex items-center"
+                    className="bg-[#DC2626] hover:bg-[#B91C1C] text-white px-3 py-1 rounded-md text-sm inline-flex items-center"
                   >
                     <Check className="h-4 w-4 mr-1" />
                     Request

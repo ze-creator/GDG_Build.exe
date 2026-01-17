@@ -156,12 +156,12 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#1E1E1E] rounded-lg shadow-xl w-full max-w-lg border border-[#333333]">
-        <div className="flex justify-between items-center p-6 border-b border-[#333333]">
-          <h2 className="text-xl font-semibold text-white">List Your Donation</h2>
+      <div className="bg-[#ffffff] rounded-lg shadow-xl w-full max-w-lg border border-[#fecaca]">
+        <div className="flex justify-between items-center p-6 border-b border-[#fecaca]">
+          <h2 className="text-xl font-semibold text-gray-900">List Your Donation</h2>
           <button 
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="text-gray-600 hover:text-gray-900 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -177,7 +177,7 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
           )}
           
           <div className="space-y-2">
-            <label htmlFor="bloodType" className="block text-sm font-medium text-gray-400">
+            <label htmlFor="bloodType" className="block text-sm font-medium text-gray-600">
               Blood Type <span className="text-red-500">*</span>
             </label>
             <select
@@ -185,7 +185,7 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
               name="bloodType"
               value={formData.bloodType}
               onChange={handleChange}
-              className={`w-full bg-[#262626] border ${errors.bloodType ? 'border-red-800' : 'border-[#333333]'} rounded-md px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]`}
+              className={`w-full bg-[#f9fafb] border ${errors.bloodType ? 'border-red-800' : 'border-[#fecaca]'} rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]`}
             >
               <option value="">Select Blood Type</option>
               <option value="A+">A+</option>
@@ -201,7 +201,7 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
           </div>
           
           <div className="space-y-2">
-            <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-400">
+            <label htmlFor="contactNumber" className="block text-sm font-medium text-gray-600">
               Contact Number <span className="text-red-500">*</span>
             </label>
             <input
@@ -211,13 +211,13 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
               value={formData.contactNumber}
               onChange={handleChange}
               placeholder="Your contact number"
-              className={`w-full bg-[#262626] border ${errors.contactNumber ? 'border-red-800' : 'border-[#333333]'} rounded-md px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]`}
+              className={`w-full bg-[#f9fafb] border ${errors.contactNumber ? 'border-red-800' : 'border-[#fecaca]'} rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]`}
             />
             {errors.contactNumber && <p className="text-red-500 text-xs mt-1">{errors.contactNumber}</p>}
           </div>
           
           <div className="space-y-2">
-            <label htmlFor="availability" className="block text-sm font-medium text-gray-400">
+            <label htmlFor="availability" className="block text-sm font-medium text-gray-600">
               Availability <span className="text-red-500">*</span>
             </label>
             <input
@@ -227,13 +227,13 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
               value={formData.availability}
               onChange={handleChange}
               placeholder="e.g., Weekdays after 5pm, Weekends only"
-              className={`w-full bg-[#262626] border ${errors.availability ? 'border-red-800' : 'border-[#333333]'} rounded-md px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]`}
+              className={`w-full bg-[#f9fafb] border ${errors.availability ? 'border-red-800' : 'border-[#fecaca]'} rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]`}
             />
             {errors.availability && <p className="text-red-500 text-xs mt-1">{errors.availability}</p>}
           </div>
           
           <div className="space-y-2">
-            <label htmlFor="location" className="block text-sm font-medium text-gray-400">
+            <label htmlFor="location" className="block text-sm font-medium text-gray-600">
               Location <span className="text-red-500">*</span>
             </label>
             <input
@@ -243,13 +243,13 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
               value={formData.location}
               onChange={handleChange}
               placeholder="City, State or Hospital/Clinic Name"
-              className={`w-full bg-[#262626] border ${errors.location ? 'border-red-800' : 'border-[#333333]'} rounded-md px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]`}
+              className={`w-full bg-[#f9fafb] border ${errors.location ? 'border-red-800' : 'border-[#fecaca]'} rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]`}
             />
             {errors.location && <p className="text-red-500 text-xs mt-1">{errors.location}</p>}
           </div>
           
           <div className="space-y-2">
-            <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-400">
+            <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-600">
               Additional Information <span className="text-gray-500">(optional)</span>
             </label>
             <textarea
@@ -259,7 +259,7 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
               onChange={handleChange}
               rows={3}
               placeholder="Any additional details you want to share"
-              className="w-full bg-[#262626] border border-[#333333] rounded-md px-3 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+              className="w-full bg-[#f9fafb] border border-[#fecaca] rounded-md px-3 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
             />
           </div>
           
@@ -267,14 +267,14 @@ const DonationListingForm = ({ isOpen, onClose, onSubmit }: DonationListingFormP
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-[#333333] rounded-md text-white hover:bg-[#262626] transition-colors"
+              className="px-4 py-2 border border-[#fecaca] rounded-md text-gray-900 hover:bg-[#f9fafb] transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-[#9C27B0] hover:bg-[#7B1FA2] text-white rounded-md transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-gray-900 rounded-md transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>

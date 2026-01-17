@@ -207,27 +207,27 @@ export default function Dashboard() {
     {
       label: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Profile",
       href: "/profile",
-      icon: <User className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <User className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Settings",
       href: "/settings",
-      icon: <Settings className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <Settings className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Blood Requests",
       href: "/blood-requests",
-      icon: <Droplet className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <Droplet className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Logout",
       href: "/",
-      icon: <LogOut className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <LogOut className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
   ];
 
@@ -588,7 +588,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <Toaster position="top-right" />
       
       <div className="flex h-screen">
@@ -608,8 +608,8 @@ export default function Dashboard() {
                   label: "John Doe",
                   href: "/profile",
                   icon: (
-                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#9C27B0]/30 flex items-center justify-center">
-                      <UserCircle className="h-5 w-5 text-[#9C27B0]" />
+                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/20 flex items-center justify-center">
+                      <UserCircle className="h-5 w-5 text-[#DC2626]" />
                     </div>
                   ),
                 }}
@@ -621,13 +621,13 @@ export default function Dashboard() {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-white">
-                Welcome to Your <span className="text-[#9C27B0]">Dashboard</span>
+              <h2 className="text-3xl font-bold text-gray-900">
+                Welcome to Your <span className="text-[#DC2626]">Dashboard</span>
               </h2>
               
               <div className="relative">
-                <Bell className="h-6 w-6 text-[#9C27B0] cursor-pointer" />
-                <span className="absolute -top-1 -right-1 bg-[#9C27B0] text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                <Bell className="h-6 w-6 text-[#DC2626] cursor-pointer" />
+                <span className="absolute -top-1 -right-1 bg-[#DC2626] text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                   {notifications.length}
                 </span>
               </div>
@@ -636,14 +636,14 @@ export default function Dashboard() {
             <UserTypeSelector userType={userType} setUserType={setUserType} />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-              <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
+              <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
                 <div className="flex items-center space-x-3">
-                  <Heart className="h-6 w-6 text-[#9C27B0]" />
+                  <Heart className="h-6 w-6 text-[#DC2626]" />
                   <div>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {userType === 'donor' ? 'Total Donations' : 'Total Received'}
                     </p>
-                    <p className="text-2xl font-bold text-white">
+                    <p className="text-2xl font-bold text-gray-900">
                       {userType === 'donor' 
                         ? donorStats.totalDonations
                         : recipientStats.totalReceived}
@@ -651,38 +651,38 @@ export default function Dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
+              <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
                 <div className="flex items-center space-x-3">
-                  <Users className="h-6 w-6 text-[#9C27B0]" />
+                  <Users className="h-6 w-6 text-[#DC2626]" />
                   <div>
-                    <p className="text-gray-400 text-sm">Lives Impacted</p>
-                    <p className="text-2xl font-bold text-white">
+                    <p className="text-gray-600 text-sm">Lives Impacted</p>
+                    <p className="text-2xl font-bold text-gray-900">
                       {donorStats.totalDonations * 3 || 0}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
+              <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
                 <div className="flex items-center space-x-3">
-                  <Calendar className="h-6 w-6 text-[#9C27B0]" />
+                  <Calendar className="h-6 w-6 text-[#DC2626]" />
                   <div>
-                    <p className="text-gray-400 text-sm">Next Appointment</p>
-                    <p className="text-2xl font-bold text-white">
+                    <p className="text-gray-600 text-sm">Next Appointment</p>
+                    <p className="text-2xl font-bold text-gray-900">
                       {appointments.length > 0 ? appointments[0].date : "None"}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
+              <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
                 <div className="flex items-center space-x-3">
-                  <AlertCircle className="h-6 w-6 text-[#9C27B0]" />
+                  <AlertCircle className="h-6 w-6 text-[#DC2626]" />
                   <div>
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {userType === 'donor' 
                         ? 'Listed Donations' 
                         : 'Available Donors'}
                     </p>
-                    <p className="text-2xl font-bold text-white">
+                    <p className="text-2xl font-bold text-gray-900">
                       {userType === 'donor'
                         ? donorStats.listedDonations
                         : recipientStats.availableDonors}
@@ -694,18 +694,18 @@ export default function Dashboard() {
 
             <div className="mb-8">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-gray-900">
                   {userType === 'donor' ? 'Your Listed Donations' : 'Available Donations'}
                 </h3>
                 
                 <div className="flex space-x-2">
                   <button 
                     onClick={() => refreshUserDataAndDonations()}
-                    className="bg-[#1E1E1E] hover:bg-[#333333] text-white py-2 px-4 rounded-md transition-colors flex items-center"
+                    className="bg-white hover:bg-gray-100 text-gray-900 border border-red-100 py-2 px-4 rounded-md transition-colors flex items-center"
                     disabled={isLoading}
                   >
                     {isLoading ? (
-                      <div className="h-4 w-4 border-2 border-[#9C27B0] border-t-transparent rounded-full animate-spin mr-2"></div>
+                      <div className="h-4 w-4 border-2 border-[#DC2626] border-t-transparent rounded-full animate-spin mr-2"></div>
                     ) : (
                       <svg className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15" 
@@ -718,7 +718,7 @@ export default function Dashboard() {
                   {userType === 'donor' && (
                     <button 
                       onClick={handleListDonation}
-                      className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white py-2 px-4 rounded-md transition-colors flex items-center"
+                      className="bg-[#DC2626] hover:bg-[#B91C1C] text-white py-2 px-4 rounded-md transition-colors flex items-center"
                     >
                       <Plus className="h-4 w-4 mr-2" />
                       List Donation
@@ -728,22 +728,22 @@ export default function Dashboard() {
               </div>
               
               {isLoading ? (
-                <div className="p-12 flex flex-col items-center justify-center bg-[#1E1E1E] border border-[#333333] rounded-lg">
-                  <div className="h-12 w-12 border-4 border-[#9C27B0] border-t-transparent rounded-full animate-spin mb-4"></div>
-                  <p className="text-gray-400">Loading donations...</p>
+                <div className="p-12 flex flex-col items-center justify-center bg-white border border-red-100 rounded-lg">
+                  <div className="h-12 w-12 border-4 border-[#DC2626] border-t-transparent rounded-full animate-spin mb-4"></div>
+                  <p className="text-gray-600">Loading donations...</p>
                 </div>
               ) : donations.length === 0 ? (
-                <div className="p-8 text-center bg-[#1E1E1E] border border-[#333333] rounded-lg">
-                  <Heart className="h-12 w-12 mx-auto text-[#9C27B0] mb-4" />
-                  <h3 className="text-xl font-semibold text-white mb-2">No donations found</h3>
-                  <p className="text-gray-400 mb-6">
+                <div className="p-8 text-center bg-white border border-red-100 rounded-lg">
+                  <Heart className="h-12 w-12 mx-auto text-[#DC2626] mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">No donations found</h3>
+                  <p className="text-gray-600 mb-6">
                     {userType === 'donor' 
                       ? 'You have not listed any donations yet. Click the "List Donation" button to get started.'
                       : 'There are no blood donations available at the moment. Please check back later.'}
                   </p>
                   <button
                     onClick={retryLoadDonations}
-                    className="px-4 py-2 bg-[#9C27B0] hover:bg-[#7B1FA2] text-white rounded-md transition-colors inline-flex items-center"
+                    className="px-4 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md transition-colors inline-flex items-center"
                   >
                     <svg className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15" 
@@ -766,58 +766,58 @@ export default function Dashboard() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-6">
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-xl font-semibold text-white mb-4">Quick Actions</h3>
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <button 
                       onClick={userType === 'donor' ? handleScheduleDonation : handleRequestDonation.bind(null, donations.find(d => d.status === 'available')?.id || '')}
-                      className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
+                      className="bg-[#DC2626] hover:bg-[#B91C1C] text-white py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
                       <Calendar className="h-5 w-5" />
                       <span>{userType === 'donor' ? 'Schedule Donation' : 'Find Donors'}</span>
                     </button>
                     <button 
                       onClick={handleUpdateProfile}
-                      className="bg-transparent border border-[#9C27B0] text-[#9C27B0] hover:bg-[#9C27B0]/10 py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
+                      className="bg-transparent border border-[#DC2626] text-[#DC2626] hover:bg-[#DC2626]/10 py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
                       <User className="h-5 w-5" />
                       <span>Update Profile</span>
                     </button>
                     <button 
                       onClick={handleViewBloodRequests}
-                      className="bg-transparent border border-[#9C27B0] text-[#9C27B0] hover:bg-[#9C27B0]/10 py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
+                      className="bg-transparent border border-[#DC2626] text-[#DC2626] hover:bg-[#DC2626]/10 py-3 px-4 rounded-md transition-colors flex items-center justify-center space-x-2">
                       <Droplet className="h-5 w-5" />
                       <span>View Blood Requests</span>
                     </button>
                   </div>
                 </div>
 
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-xl font-semibold text-white mb-4">Upcoming Appointments</h3>
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Upcoming Appointments</h3>
                   <div className="space-y-4">
                     {appointments.length > 0 ? (
                       appointments.map((appointment) => (
-                        <div key={appointment.id} className="flex items-start space-x-4 p-4 rounded-md bg-[#262626] border border-[#333333]">
-                          <div className="flex-shrink-0 p-2 bg-[#9C27B0]/20 rounded-md">
-                            <Calendar className="h-5 w-5 text-[#9C27B0]" />
+                        <div key={appointment.id} className="flex items-start space-x-4 p-4 rounded-md bg-gray-50 border border-red-100">
+                          <div className="flex-shrink-0 p-2 bg-[#DC2626]/10 rounded-md">
+                            <Calendar className="h-5 w-5 text-[#DC2626]" />
                           </div>
                           <div className="flex-1">
-                            <p className="text-white font-medium">{appointment.date}</p>
-                            <div className="flex items-center space-x-2 text-sm text-gray-400">
+                            <p className="text-gray-900 font-medium">{appointment.date}</p>
+                            <div className="flex items-center space-x-2 text-sm text-gray-600">
                               <Clock className="h-4 w-4" />
                               <span>{appointment.time}</span>
                             </div>
-                            <p className="text-sm text-gray-400 mt-1">{appointment.location}</p>
+                            <p className="text-sm text-gray-600 mt-1">{appointment.location}</p>
                           </div>
                           <div className="flex flex-col space-y-2">
                             <span className={`text-xs px-2 py-1 rounded-full ${
                               appointment.status === 'confirmed' 
-                                ? 'bg-green-900 text-green-300' 
-                                : 'bg-yellow-900 text-yellow-300'
+                                ? 'bg-green-100 text-green-700' 
+                                : 'bg-yellow-100 text-yellow-700'
                             }`}>
                               {appointment.status === 'confirmed' ? 'Confirmed' : 'Pending'}
                             </span>
                             <button 
                               onClick={() => handleRescheduleAppointment(appointment)}
-                              className="flex items-center text-xs text-[#9C27B0] hover:underline"
+                              className="flex items-center text-xs text-[#DC2626] hover:underline"
                             >
                               <Edit className="h-3 w-3 mr-1" />
                               Reschedule
@@ -826,10 +826,10 @@ export default function Dashboard() {
                         </div>
                       ))
                     ) : (
-                      <div className="text-center p-8 bg-[#262626] border border-[#333333] rounded-md">
+                      <div className="text-center p-8 bg-gray-50 border border-red-100 rounded-md">
                         <Calendar className="h-12 w-12 mx-auto text-gray-400 mb-3" />
-                        <h3 className="text-lg font-semibold text-white">No upcoming appointments</h3>
-                        <p className="text-gray-400 mt-1">
+                        <h3 className="text-lg font-semibold text-gray-900">No upcoming appointments</h3>
+                        <p className="text-gray-600 mt-1">
                           {userType === 'donor' 
                             ? 'Schedule a donation to get started' 
                             : 'Request a donation when you need blood'}
@@ -837,7 +837,7 @@ export default function Dashboard() {
                       </div>
                     )}
                     {appointments.length > 0 && (
-                      <button className="w-full mt-2 bg-transparent border border-[#333333] text-white hover:bg-[#262626] py-2 rounded-md transition-colors">
+                      <button className="w-full mt-2 bg-transparent border border-red-100 text-gray-900 hover:bg-gray-50 py-2 rounded-md transition-colors">
                         View All Appointments
                       </button>
                     )}
@@ -846,30 +846,30 @@ export default function Dashboard() {
               </div>
 
               <div className="space-y-6">
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-xl font-semibold text-white mb-4">Notifications</h3>
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Notifications</h3>
                   <div className="space-y-4">
                     {userNotifications.length > 0 ? (
                       userNotifications.slice(0, 3).map((notification) => (
-                        <div key={notification.id || Math.random()} className="flex items-start space-x-4 p-4 rounded-md bg-[#262626] border border-[#333333]">
+                        <div key={notification.id || Math.random()} className="flex items-start space-x-4 p-4 rounded-md bg-gray-50 border border-red-100">
                           <div className={`flex-shrink-0 p-2 rounded-md ${
                             notification.type === 'request' 
-                              ? 'bg-blue-900' 
+                              ? 'bg-blue-100' 
                               : notification.type === 'accepted' 
-                                ? 'bg-green-900' 
-                                : 'bg-gray-800'
+                                ? 'bg-green-100' 
+                                : 'bg-gray-100'
                           }`}>
                             {notification.type === 'request' ? (
-                              <Heart className="h-5 w-5 text-blue-400" />
+                              <Heart className="h-5 w-5 text-blue-600" />
                             ) : notification.type === 'accepted' ? (
-                              <CheckCircle className="h-5 w-5 text-green-400" />
+                              <CheckCircle className="h-5 w-5 text-green-600" />
                             ) : (
-                              <Info className="h-5 w-5 text-gray-400" />
+                              <Info className="h-5 w-5 text-gray-600" />
                             )}
                           </div>
                           <div className="flex-1">
-                            <p className="text-white font-medium">{notification.title || 'Notification'}</p>
-                            <p className="text-gray-400">{notification.message || ''}</p>
+                            <p className="text-gray-900 font-medium">{notification.title || 'Notification'}</p>
+                            <p className="text-gray-600">{notification.message || ''}</p>
                             <p className="text-xs text-gray-500 mt-1">
                               {notification.createdAt?.toDate ? 
                                 new Date(notification.createdAt.toDate()).toLocaleString() : 
@@ -879,22 +879,22 @@ export default function Dashboard() {
                             </p>
                           </div>
                           {notification.read === false && (
-                            <div className="h-2 w-2 rounded-full bg-[#9C27B0]"></div>
+                            <div className="h-2 w-2 rounded-full bg-[#DC2626]"></div>
                           )}
                         </div>
                       ))
                     ) : (
-                      <div className="text-center p-8 bg-[#262626] border border-[#333333] rounded-md">
+                      <div className="text-center p-8 bg-gray-50 border border-red-100 rounded-md">
                         <Bell className="h-12 w-12 mx-auto text-gray-400 mb-3" />
-                        <h3 className="text-lg font-semibold text-white">No notifications</h3>
-                        <p className="text-gray-400 mt-1">
+                        <h3 className="text-lg font-semibold text-gray-900">No notifications</h3>
+                        <p className="text-gray-600 mt-1">
                           We'll notify you of important updates here
                         </p>
                       </div>
                     )}
                     {userNotifications.length > 0 && (
                       <button 
-                        className="w-full mt-2 bg-transparent border border-[#333333] text-white hover:bg-[#262626] py-2 rounded-md transition-colors"
+                        className="w-full mt-2 bg-transparent border border-red-100 text-gray-900 hover:bg-gray-50 py-2 rounded-md transition-colors"
                         onClick={() => router.push('/notifications')}
                       >
                         View All Notifications
@@ -903,27 +903,27 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-xl font-semibold text-white mb-4">Direct Actions</h3>
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Direct Actions</h3>
                   <div className="space-y-3">
                     <button 
                       onClick={userType === 'donor' ? handleDonateNow : handleRequestDonation.bind(null, donations.find(d => d.status === 'available')?.id || '')}
-                      className="w-full bg-[#9C27B0] hover:bg-[#7B1FA2] text-white py-3 rounded-md transition-colors">
+                      className="w-full bg-[#DC2626] hover:bg-[#B91C1C] text-white py-3 rounded-md transition-colors">
                       {userType === 'donor' ? 'Donate Now' : 'Request Blood'}
                     </button>
                     <button 
                       onClick={() => handleRescheduleAppointment()}
-                      className="w-full bg-transparent border border-[#9C27B0] text-[#9C27B0] hover:bg-[#9C27B0]/10 py-3 rounded-md transition-colors">
+                      className="w-full bg-transparent border border-[#DC2626] text-[#DC2626] hover:bg-[#DC2626]/10 py-3 rounded-md transition-colors">
                       {userType === 'donor' ? 'Reschedule Appointment' : 'View Request Status'}
                     </button>
                     <button 
                       onClick={handleViewBloodBanks}
-                      className="w-full bg-transparent border border-[#333333] text-white hover:bg-[#262626] py-3 rounded-md transition-colors">
+                      className="w-full bg-transparent border border-red-100 text-gray-900 hover:bg-gray-50 py-3 rounded-md transition-colors">
                       View Blood Banks
                     </button>
                     <button 
                       onClick={handleResetData}
-                      className="w-full bg-transparent border border-red-900 text-red-400 hover:bg-red-900/10 py-3 rounded-md transition-colors">
+                      className="w-full bg-transparent border border-red-200 text-red-600 hover:bg-red-50 py-3 rounded-md transition-colors">
                       Reset Donation Data
                     </button>
                   </div>
@@ -964,13 +964,13 @@ const Logo = () => {
   return (
     <Link
       href="/dashboard"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-gray-900"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#9C27B0]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="font-medium whitespace-pre text-white"
+        className="font-medium whitespace-pre text-gray-900"
       >
         BloodConnect
       </motion.span>
@@ -982,9 +982,9 @@ const LogoIcon = () => {
   return (
     <Link
       href="/dashboard"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-gray-900"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#9C27B0]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
     </Link>
   );
 };

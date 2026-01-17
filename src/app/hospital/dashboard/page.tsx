@@ -65,57 +65,57 @@ export default function HospitalDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white p-8">
+    <div className="min-h-screen bg-[#f9fafb] text-gray-900 p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">Hospital Dashboard</h1>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-[#1E1E1E] p-6 rounded-lg border border-[#333333]">
+          <div className="bg-[#ffffff] p-6 rounded-lg border border-[#fecaca]">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-400">Pending Appointments</p>
+                <p className="text-gray-600">Pending Appointments</p>
                 <h3 className="text-2xl font-bold">{stats.pendingAppointments}</h3>
               </div>
-              <Calendar className="h-8 w-8 text-[#9C27B0]" />
+              <Calendar className="h-8 w-8 text-[#DC2626]" />
             </div>
           </div>
 
-          <div className="bg-[#1E1E1E] p-6 rounded-lg border border-[#333333]">
+          <div className="bg-[#ffffff] p-6 rounded-lg border border-[#fecaca]">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-400">Completed Donations</p>
+                <p className="text-gray-600">Completed Donations</p>
                 <h3 className="text-2xl font-bold">{stats.completedDonations}</h3>
               </div>
-              <Users className="h-8 w-8 text-[#9C27B0]" />
+              <Users className="h-8 w-8 text-[#DC2626]" />
             </div>
           </div>
 
-          <div className="bg-[#1E1E1E] p-6 rounded-lg border border-[#333333]">
+          <div className="bg-[#ffffff] p-6 rounded-lg border border-[#fecaca]">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-400">Active Requests</p>
+                <p className="text-gray-600">Active Requests</p>
                 <h3 className="text-2xl font-bold">{stats.activeRequests}</h3>
               </div>
-              <Bell className="h-8 w-8 text-[#9C27B0]" />
+              <Bell className="h-8 w-8 text-[#DC2626]" />
             </div>
           </div>
         </div>
 
         {/* Appointments Section */}
-        <div className="bg-[#1E1E1E] rounded-lg border border-[#333333] p-6">
+        <div className="bg-[#ffffff] rounded-lg border border-[#fecaca] p-6">
           <h2 className="text-xl font-semibold mb-4">Recent Appointments</h2>
           
           <div className="space-y-4">
             {appointments.map((appointment: any) => (
               <div 
                 key={appointment.id} 
-                className="bg-[#262626] p-4 rounded-lg border border-[#333333]"
+                className="bg-[#f9fafb] p-4 rounded-lg border border-[#fecaca]"
               >
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-semibold">{appointment.donorName}</h3>
-                    <div className="text-sm text-gray-400 space-y-1 mt-2">
+                    <div className="text-sm text-gray-600 space-y-1 mt-2">
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 mr-2" />
                         {new Date(appointment.donationDate).toLocaleDateString()}
@@ -132,14 +132,14 @@ export default function HospitalDashboard() {
                       <>
                         <button
                           onClick={() => handleAppointmentAction(appointment.id, 'accept')}
-                          className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-md text-sm flex items-center"
+                          className="bg-green-600 hover:bg-green-700 text-gray-900 px-3 py-1 rounded-md text-sm flex items-center"
                         >
                           <Check className="h-4 w-4 mr-1" />
                           Accept
                         </button>
                         <button
                           onClick={() => handleAppointmentAction(appointment.id, 'reject')}
-                          className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm flex items-center"
+                          className="bg-red-600 hover:bg-red-700 text-gray-900 px-3 py-1 rounded-md text-sm flex items-center"
                         >
                           <X className="h-4 w-4 mr-1" />
                           Reject
@@ -164,7 +164,7 @@ export default function HospitalDashboard() {
             ))}
 
             {appointments.length === 0 && (
-              <div className="text-center py-8 text-gray-400">
+              <div className="text-center py-8 text-gray-600">
                 <Calendar className="h-12 w-12 mx-auto mb-3 text-gray-500" />
                 <p>No appointments found</p>
               </div>

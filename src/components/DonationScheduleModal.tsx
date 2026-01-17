@@ -113,7 +113,7 @@ export default function DonationScheduleModal({
             <div className="space-y-2">
               <label className="block text-[#2C3E50] font-medium">
                 <div className="flex items-center space-x-2 mb-1">
-                  <Calendar className="h-4 w-4 text-[#1E88E5]" />
+                  <Calendar className="h-4 w-4 text-[#DC2626]" />
                   <span>Date</span>
                 </div>
                 <input 
@@ -121,7 +121,7 @@ export default function DonationScheduleModal({
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   required
-                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
               </label>
             </div>
@@ -129,7 +129,7 @@ export default function DonationScheduleModal({
             <div className="space-y-2">
               <label className="block text-[#2C3E50] font-medium">
                 <div className="flex items-center space-x-2 mb-1">
-                  <Clock className="h-4 w-4 text-[#1E88E5]" />
+                  <Clock className="h-4 w-4 text-[#DC2626]" />
                   <span>Time</span>
                 </div>
                 <input 
@@ -137,7 +137,7 @@ export default function DonationScheduleModal({
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
                   required
-                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                  className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
                 />
               </label>
             </div>
@@ -147,14 +147,14 @@ export default function DonationScheduleModal({
           <div className="space-y-2">
             <label className="block text-[#2C3E50] font-medium">
               <div className="flex items-center space-x-2 mb-1">
-                <MapPin className="h-4 w-4 text-[#1E88E5]" />
+                <MapPin className="h-4 w-4 text-[#DC2626]" />
                 <span>Donation Center</span>
               </div>
               <select 
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 required
-                className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
               >
                 <option value="" className="bg-[#F8FAFC]">Select a location</option>
                 {locations.map((loc) => (
@@ -180,7 +180,7 @@ export default function DonationScheduleModal({
           <div className="space-y-2">
             <label className="block text-[#2C3E50] font-medium">
               <div className="flex items-center space-x-2 mb-1">
-                <Droplet className="h-4 w-4 text-[#1E88E5]" />
+                <Droplet className="h-4 w-4 text-[#DC2626]" />
                 <span>Donation Type</span>
               </div>
             </label>
@@ -192,8 +192,8 @@ export default function DonationScheduleModal({
                   onClick={() => setDonationType(type.id)}
                   className={`p-3 border rounded-md cursor-pointer transition-colors ${
                     donationType === type.id 
-                      ? 'border-[#1E88E5] bg-[#1E88E5]/10' 
-                      : 'border-[#E1E8ED] bg-[#F8FAFC] hover:border-[#1E88E5]/50'
+                      ? 'border-[#DC2626] bg-[#DC2626]/10' 
+                      : 'border-[#E1E8ED] bg-[#F8FAFC] hover:border-[#DC2626]/50'
                   }`}
                 >
                   <div className="flex items-center space-x-2">
@@ -204,7 +204,7 @@ export default function DonationScheduleModal({
                       value={type.id}
                       checked={donationType === type.id}
                       onChange={() => setDonationType(type.id)}
-                      className="text-[#1E88E5] focus:ring-0"
+                      className="text-[#DC2626] focus:ring-0"
                     />
                     <label htmlFor={type.id} className="cursor-pointer flex-1">
                       <span className="block text-[#2C3E50]">{type.label}</span>
@@ -220,7 +220,7 @@ export default function DonationScheduleModal({
           <div className="space-y-2">
             <label className="block text-[#2C3E50] font-medium">
               <div className="flex items-center space-x-2 mb-1">
-                <Users className="h-4 w-4 text-[#1E88E5]" />
+                <Users className="h-4 w-4 text-[#DC2626]" />
                 <span>Special Notes (Optional)</span>
               </div>
               <textarea 
@@ -228,7 +228,7 @@ export default function DonationScheduleModal({
                 onChange={(e) => setSpecialNotes(e.target.value)}
                 placeholder="Any health conditions, preferences, or other information we should know?"
                 rows={3}
-                className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#1E88E5]"
+                className="w-full px-4 py-2 bg-[#F8FAFC] border border-[#E1E8ED] rounded-md text-[#2C3E50] focus:outline-none focus:ring-1 focus:ring-[#DC2626]"
               />
             </label>
           </div>
@@ -244,7 +244,7 @@ export default function DonationScheduleModal({
             </button>
             <button 
               type="submit"
-              className="px-6 py-2 bg-[#1E88E5] hover:bg-[#1976D2] text-white rounded-md transition-colors"
+              className="px-6 py-2 bg-[#DC2626] hover:bg-[#B91C1C] text-white rounded-md transition-colors"
             >
               {isRescheduling ? 'Reschedule Appointment' : 'Schedule Donation'}
             </button>

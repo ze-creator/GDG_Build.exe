@@ -52,6 +52,13 @@ service cloud.firestore {
         (resource.data.userId == request.auth.uid || resource.data.donorId == request.auth.uid);
     }
     
+    // Blood requests collection (for blood-requests page) - allow public read/write for development
+    match /blood_requests/{requestId} {
+      allow read: if true;  // Allow public read
+      allow create: if true;  // Allow public create for seeding
+      allow update, delete: if isAuthenticated();  // Require auth for updates/deletes
+    }
+    
     // Donation requests - created by hospitals, readable by authenticated users
     match /donationRequests/{requestId} {
       allow read: if isAuthenticated();

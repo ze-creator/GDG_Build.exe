@@ -116,27 +116,27 @@ export default function Profile() {
     {
       label: "Dashboard",
       href: "/dashboard",
-      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <LayoutDashboard className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Profile",
       href: "/profile",
-      icon: <User className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <User className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Settings",
       href: "/settings",
-      icon: <Settings className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <Settings className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Blood Requests",
       href: "/blood-requests",
-      icon: <Droplet className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <Droplet className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
     {
       label: "Logout",
       href: "/",
-      icon: <LogOut className="h-5 w-5 shrink-0 text-[#9C27B0]" />,
+      icon: <LogOut className="h-5 w-5 shrink-0 text-[#DC2626]" />,
     },
   ];
 
@@ -167,7 +167,7 @@ export default function Profile() {
     new Date(profileData.lastLoginTime).toLocaleString() : 'Never';
 
   return (
-    <div className="min-h-screen bg-[#121212] text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="flex h-screen">
         <Sidebar open={open} setOpen={setOpen}>
           <SidebarBody className="justify-between gap-10">
@@ -185,8 +185,8 @@ export default function Profile() {
                   label: `${profileData.firstName} ${profileData.lastName}`,
                   href: "/profile",
                   icon: (
-                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#9C27B0]/30 flex items-center justify-center">
-                      <UserCircle className="h-5 w-5 text-[#9C27B0]" />
+                    <div className="h-7 w-7 shrink-0 rounded-full bg-[#DC2626]/20 flex items-center justify-center">
+                      <UserCircle className="h-5 w-5 text-[#DC2626]" />
                     </div>
                   ),
                 }}
@@ -199,14 +199,14 @@ export default function Profile() {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-white">
-                Your <span className="text-[#9C27B0]">Profile</span>
+              <h2 className="text-3xl font-bold text-gray-900">
+                Your <span className="text-[#DC2626]">Profile</span>
               </h2>
               
               {!isEditing ? (
                 <button 
                   onClick={() => setIsEditing(true)}
-                  className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white py-2 px-4 rounded-md transition-colors flex items-center"
+                  className="bg-[#DC2626] hover:bg-[#B91C1C] text-white py-2 px-4 rounded-md transition-colors flex items-center"
                 >
                   <Edit className="h-4 w-4 mr-2" />
                   Edit Profile
@@ -215,14 +215,14 @@ export default function Profile() {
                 <div className="flex space-x-2">
                   <button 
                     onClick={() => setIsEditing(false)}
-                    className="bg-transparent border border-[#9C27B0] text-[#9C27B0] py-2 px-4 rounded-md transition-colors flex items-center"
+                    className="bg-transparent border border-[#DC2626] text-[#DC2626] py-2 px-4 rounded-md transition-colors flex items-center"
                   >
                     <X className="h-4 w-4 mr-2" />
                     Cancel
                   </button>
                   <button 
                     onClick={handleSubmit}
-                    className="bg-[#9C27B0] hover:bg-[#7B1FA2] text-white py-2 px-4 rounded-md transition-colors flex items-center"
+                    className="bg-[#DC2626] hover:bg-[#B91C1C] text-white py-2 px-4 rounded-md transition-colors flex items-center"
                   >
                     <Save className="h-4 w-4 mr-2" />
                     Save Changes
@@ -234,25 +234,25 @@ export default function Profile() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Profile Card */}
               <div className="md:col-span-1">
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
                   <div className="flex flex-col items-center">
-                    <div className="h-24 w-24 rounded-full bg-[#9C27B0]/20 flex items-center justify-center mb-4">
-                      <UserCircle className="h-16 w-16 text-[#9C27B0]" />
+                    <div className="h-24 w-24 rounded-full bg-[#DC2626]/10 flex items-center justify-center mb-4">
+                      <UserCircle className="h-16 w-16 text-[#DC2626]" />
                     </div>
-                    <h3 className="text-xl font-bold text-white">{profileData.firstName} {profileData.lastName}</h3>
-                    <p className="text-gray-400 mt-1">{profileData.email}</p>
+                    <h3 className="text-xl font-bold text-gray-900">{profileData.firstName} {profileData.lastName}</h3>
+                    <p className="text-gray-600 mt-1">{profileData.email}</p>
                     
-                    <div className="mt-4 px-3 py-1 rounded-full bg-[#9C27B0]/20 text-[#9C27B0] text-sm font-medium">
+                    <div className="mt-4 px-3 py-1 rounded-full bg-[#DC2626]/10 text-[#DC2626] text-sm font-medium">
                       {profileData.bloodType} Blood Type
                     </div>
                     
-                    <div className="mt-4 w-full border-t border-[#333333] pt-4">
+                    <div className="mt-4 w-full border-t border-red-100 pt-4">
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-400">Donor Status</span>
+                        <span className="text-gray-600">Donor Status</span>
                         <span className={`px-2 py-1 rounded-full text-xs ${
                           profileData.isAvailable
-                            ? 'bg-green-900/50 text-green-400' 
-                            : 'bg-red-900/50 text-red-400'
+                            ? 'bg-green-100 text-green-700' 
+                            : 'bg-red-100 text-red-700'
                         }`}>
                           {profileData.isAvailable ? 'Available' : 'Unavailable'}
                         </span>
@@ -262,36 +262,36 @@ export default function Profile() {
                 </div>
                 
                 {/* Login Information */}
-                <div className="mt-6 p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                    <Shield className="h-5 w-5 text-[#9C27B0] mr-2" />
+                <div className="mt-6 p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Shield className="h-5 w-5 text-[#DC2626] mr-2" />
                     Login Information
                   </h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <p className="text-gray-400 text-sm">Last Login</p>
+                      <p className="text-gray-600 text-sm">Last Login</p>
                       <div className="flex items-center mt-1">
-                        <Clock className="h-4 w-4 text-[#9C27B0] mr-2" />
-                        <p className="text-white">{formattedLastLogin}</p>
+                        <Clock className="h-4 w-4 text-[#DC2626] mr-2" />
+                        <p className="text-gray-900">{formattedLastLogin}</p>
                       </div>
                     </div>
                     
                     {deviceInfo && (
                       <div>
-                        <p className="text-gray-400 text-sm">Last Device</p>
+                        <p className="text-gray-600 text-sm">Last Device</p>
                         <div className="flex items-center mt-1">
-                          <Laptop className="h-4 w-4 text-[#9C27B0] mr-2" />
-                          <p className="text-white">{deviceInfo.browser} on {deviceInfo.os} ({deviceInfo.device})</p>
+                          <Laptop className="h-4 w-4 text-[#DC2626] mr-2" />
+                          <p className="text-gray-900">{deviceInfo.browser} on {deviceInfo.os} ({deviceInfo.device})</p>
                         </div>
                       </div>
                     )}
                     
                     <div>
-                      <p className="text-gray-400 text-sm">Login Count</p>
+                      <p className="text-gray-600 text-sm">Login Count</p>
                       <div className="flex items-center mt-1">
-                        <UserCircle className="h-4 w-4 text-[#9C27B0] mr-2" />
-                        <p className="text-white">{profileData.loginCount} times</p>
+                        <UserCircle className="h-4 w-4 text-[#DC2626] mr-2" />
+                        <p className="text-gray-900">{profileData.loginCount} times</p>
                       </div>
                     </div>
                   </div>
@@ -300,8 +300,8 @@ export default function Profile() {
 
               {/* Profile Details */}
               <div className="md:col-span-2">
-                <div className="p-6 rounded-lg bg-[#1E1E1E] border border-[#333333] shadow-sm">
-                  <h3 className="text-xl font-semibold text-white mb-6">Profile Details</h3>
+                <div className="p-6 rounded-lg bg-white border border-red-100 shadow-sm">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-6">Profile Details</h3>
                   
                   {isEditing ? (
                     <form className="space-y-6">
@@ -313,7 +313,7 @@ export default function Profile() {
                             name="firstName"
                             value={profileData.firstName}
                             onChange={handleChange}
-                            className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+                            className="w-full bg-gray-50 border border-red-100 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
                           />
                         </div>
                         <div>
@@ -323,7 +323,7 @@ export default function Profile() {
                             name="lastName"
                             value={profileData.lastName}
                             onChange={handleChange}
-                            className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+                            className="w-full bg-gray-50 border border-red-100 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
                           />
                         </div>
                       </div>
@@ -335,7 +335,7 @@ export default function Profile() {
                           name="email"
                           value={profileData.email}
                           disabled
-                          className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-gray-500 focus:outline-none cursor-not-allowed"
+                          className="w-full bg-gray-100 border border-red-100 rounded-md px-4 py-2 text-gray-500 focus:outline-none cursor-not-allowed"
                         />
                         <p className="text-xs text-gray-500 mt-1">Email address cannot be changed</p>
                       </div>
@@ -347,7 +347,7 @@ export default function Profile() {
                             name="bloodType"
                             value={profileData.bloodType}
                             onChange={handleChange}
-                            className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+                            className="w-full bg-gray-50 border border-red-100 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
                           >
                             <option value="">Select Blood Type</option>
                             <option value="A+">A+</option>
@@ -373,13 +373,13 @@ export default function Profile() {
                               className="sr-only"
                             />
                             <div className={`relative w-10 h-5 rounded-full transition-colors ${
-                              profileData.isAvailable ? 'bg-[#9C27B0]' : 'bg-[#333333]'
+                              profileData.isAvailable ? 'bg-[#DC2626]' : 'bg-gray-300'
                             }`}>
                               <div className={`absolute left-0.5 top-0.5 w-4 h-4 rounded-full bg-white transition-transform ${
                                 profileData.isAvailable ? 'translate-x-5' : 'translate-x-0'
                               }`}></div>
                             </div>
-                            <span className="ml-2 text-white">Available as Donor</span>
+                            <span className="ml-2 text-gray-900">Available as Donor</span>
                           </label>
                         </div>
                       </div>
@@ -391,7 +391,7 @@ export default function Profile() {
                           name="phone"
                           value={profileData.phone}
                           onChange={handleChange}
-                          className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+                          className="w-full bg-gray-50 border border-red-100 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
                         />
                       </div>
                       
@@ -402,7 +402,7 @@ export default function Profile() {
                           value={profileData.address}
                           onChange={handleChange}
                           rows={3}
-                          className="w-full bg-[#262626] border border-[#333333] rounded-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-[#9C27B0] focus:border-[#9C27B0]"
+                          className="w-full bg-gray-50 border border-red-100 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#DC2626] focus:border-[#DC2626]"
                         ></textarea>
                       </div>
                     </form>
@@ -410,61 +410,61 @@ export default function Profile() {
                     <div className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="text-sm font-medium text-gray-400">First Name</h4>
-                          <p className="text-white mt-1">{profileData.firstName}</p>
+                          <h4 className="text-sm font-medium text-gray-600">First Name</h4>
+                          <p className="text-gray-900 mt-1">{profileData.firstName}</p>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium text-gray-400">Last Name</h4>
-                          <p className="text-white mt-1">{profileData.lastName}</p>
+                          <h4 className="text-sm font-medium text-gray-600">Last Name</h4>
+                          <p className="text-gray-900 mt-1">{profileData.lastName}</p>
                         </div>
                       </div>
                       
                       <div>
-                        <h4 className="text-sm font-medium text-gray-400">Email Address</h4>
+                        <h4 className="text-sm font-medium text-gray-600">Email Address</h4>
                         <div className="flex items-center mt-1">
-                          <Mail className="h-4 w-4 text-[#9C27B0] mr-2" />
-                          <p className="text-white">{profileData.email}</p>
+                          <Mail className="h-4 w-4 text-[#DC2626] mr-2" />
+                          <p className="text-gray-900">{profileData.email}</p>
                         </div>
                       </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                          <h4 className="text-sm font-medium text-gray-400">Blood Type</h4>
+                          <h4 className="text-sm font-medium text-gray-600">Blood Type</h4>
                           <div className="flex items-center mt-1">
-                            <Droplet className="h-4 w-4 text-[#9C27B0] mr-2" />
-                            <p className="text-white">{profileData.bloodType}</p>
+                            <Droplet className="h-4 w-4 text-[#DC2626] mr-2" />
+                            <p className="text-gray-900">{profileData.bloodType}</p>
                           </div>
                         </div>
                         <div>
-                          <h4 className="text-sm font-medium text-gray-400">Donor Status</h4>
+                          <h4 className="text-sm font-medium text-gray-600">Donor Status</h4>
                           <div className="flex items-center mt-1">
-                            <Heart className="h-4 w-4 text-[#9C27B0] mr-2" />
-                            <p className="text-white">{profileData.isAvailable ? 'Available' : 'Unavailable'}</p>
+                            <Heart className="h-4 w-4 text-[#DC2626] mr-2" />
+                            <p className="text-gray-900">{profileData.isAvailable ? 'Available' : 'Unavailable'}</p>
                           </div>
                         </div>
                       </div>
                       
                       <div>
-                        <h4 className="text-sm font-medium text-gray-400">Phone Number</h4>
+                        <h4 className="text-sm font-medium text-gray-600">Phone Number</h4>
                         <div className="flex items-center mt-1">
-                          <Phone className="h-4 w-4 text-[#9C27B0] mr-2" />
-                          <p className="text-white">{profileData.phone || 'Not provided'}</p>
+                          <Phone className="h-4 w-4 text-[#DC2626] mr-2" />
+                          <p className="text-gray-900">{profileData.phone || 'Not provided'}</p>
                         </div>
                       </div>
                       
                       <div>
-                        <h4 className="text-sm font-medium text-gray-400">Address</h4>
+                        <h4 className="text-sm font-medium text-gray-600">Address</h4>
                         <div className="flex mt-1">
-                          <MapPin className="h-4 w-4 text-[#9C27B0] mr-2 shrink-0 mt-0.5" />
-                          <p className="text-white">{profileData.address || 'Not provided'}</p>
+                          <MapPin className="h-4 w-4 text-[#DC2626] mr-2 shrink-0 mt-0.5" />
+                          <p className="text-gray-900">{profileData.address || 'Not provided'}</p>
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-medium text-gray-400">User Role</h4>
+                        <h4 className="text-sm font-medium text-gray-600">User Role</h4>
                         <div className="flex items-center mt-1">
-                          <User className="h-4 w-4 text-[#9C27B0] mr-2" />
-                          <p className="text-white">
+                          <User className="h-4 w-4 text-[#DC2626] mr-2" />
+                          <p className="text-gray-900">
                             {profileData.role === 'DONOR' ? 'Blood Donor' : 'Blood Recipient'}
                           </p>
                         </div>
@@ -485,13 +485,13 @@ const Logo = () => {
   return (
     <Link
       href="/dashboard"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-gray-900"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#9C27B0]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="font-medium whitespace-pre text-white"
+        className="font-medium whitespace-pre text-gray-900"
       >
         BloodConnect
       </motion.span>
@@ -503,9 +503,9 @@ const LogoIcon = () => {
   return (
     <Link
       href="/dashboard"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-white"
+      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-gray-900"
     >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#9C27B0]" />
+      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-[#DC2626]" />
     </Link>
   );
 };
